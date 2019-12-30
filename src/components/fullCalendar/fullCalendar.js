@@ -3,19 +3,22 @@ import ReactDOM from 'react-dom';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import './fullCalendar.css';
-import {sedra, holidays,getHebDay, changeYear,candleLighting , havdalah} from '../helpers/hebcal';
+import {sedra, holidays,getHebDay, changeYear1,candleLighting , havdalah} from '../helpers/hebcal';
 import Day from '../day/day'
 import '@fullcalendar/core/main.css';
 import '@fullcalendar/daygrid/main.css';
 //import * as moment from 'moment';
 import Hebcal from 'hebcal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ReactComponent as Logo } from '../../s.svg'
+import { ReactComponent as Logo } from '../../s.svg';
+import { connect } from "react-redux";
+import { changeYear } from "../../redux/actions";
 
 
 const calendarRef = React.createRef();
 
-function MyFullCalendar() {
+function MyFullCalendar({holidays, changeYear}) {
+  // console.log(getHolidays(new Date()));
     const [parshaEvents, setParshaEvents] = useState([]);
     const [holidaysEvents, setHolidays] = useState([]);
     const getEvents = () =>{
@@ -42,7 +45,7 @@ function MyFullCalendar() {
         //   //getEvents();
         // });
      },[parshaEvents,holidaysEvents]);
-    
+    let num = 1;
   return (
     <div className="full-calendar">
          <FullCalendar  
@@ -62,7 +65,13 @@ function MyFullCalendar() {
          }}
          datesRender = {({el,view})=>{ 
           //console.log(view)
-          changeYear(view.currentStart); 
+          //changeYear1(view.currentStart); 
+          //  console.log(num);
+          //  num++;
+          if(view.currentStart.getFullYear() != holidays.year){
+           changeYear(view.currentStart)
+          }
+  
           let arr = el.getElementsByClassName('fc-day-top');
           for(let i = 0; i < arr.length; i++){
             let hebDay = React.createElement('span', {className: "fc-day-number heb-day a",key: i }, getHebDay(arr[i].getAttribute('data-date')));
@@ -98,4 +107,8 @@ function MyFullCalendar() {
   );
 }
 
-export default MyFullCalendar;
+const mapStateToProps = state => {
+  console.log(state.hebcal)
+  return { holidays: state.hebcal};
+};
+export default connect(mapStateToProps, {changeYear})(MyFullCalendar);

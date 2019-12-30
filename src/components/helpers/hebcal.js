@@ -56,11 +56,11 @@ export const sedra = async function (start, end) {
     // }
 
     export const holiday = function (date) {
-        return year.holidays[Hebcal.HDate(date).toString()];
+       // return year.holidays[Hebcal.HDate(date).toString()];
     }
 
     export const prasha = function (date) {
-        return year.prashaEvent[Hebcal.HDate(date).toString()];
+       // return year.prashaEvent[Hebcal.HDate(date).toString()];
     }
 
     export const candleLighting = function (date) {
@@ -70,7 +70,7 @@ export const sedra = async function (start, end) {
     export const havdalah = function (date) {
         return new Hebcal.HDate(date).setCity(city).havdalah()
     }
-    export const changeYear = function(date){
+    export const changeYear1 = function(date){
         if(date.getFullYear()  > year.year)
             year = year.next();
             // sedra(moment().startOf('year'),moment().endOf('year'));
