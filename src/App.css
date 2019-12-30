@@ -1,0 +1,11 @@
+.full-calendar{
+  height: 50%;
+}
+
+/* RTL */
+table{
+  direction: rtl;
+}
+/* .fc-ltr{
+  text-align: right !important;
+} */

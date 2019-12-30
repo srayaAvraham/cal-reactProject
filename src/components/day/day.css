@@ -1,0 +1,15 @@
+.day{
+    display: flex !important;
+    flex-direction: column;
+    /* align-content: flex-end; */
+    height: 100%;
+    font-size: 0.8vw;
+}
+
+.holiday{
+    align-self: center;
+}
+
+.unactive{
+    opacity: 0.3;
+}
