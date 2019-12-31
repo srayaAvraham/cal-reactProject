@@ -13,11 +13,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ReactComponent as Logo } from '../../s.svg';
 import { connect } from "react-redux";
 import { changeYear } from "../../redux/actions";
+import { Provider } from "react-redux";
+import store from "../../redux/store"; 
 
 
 const calendarRef = React.createRef();
 
-function MyFullCalendar({holidays, changeYear}) {
+function MyFullCalendar({hebcal, changeYear}) {
   // console.log(getHolidays(new Date()));
     const [parshaEvents, setParshaEvents] = useState([]);
     const [holidaysEvents, setHolidays] = useState([]);
@@ -64,19 +66,15 @@ function MyFullCalendar({holidays, changeYear}) {
           //console.log(el,view)},
          }}
          datesRender = {({el,view})=>{ 
-          //console.log(view)
           //changeYear1(view.currentStart); 
-          //  console.log(num);
-          //  num++;
-          if(view.currentStart.getFullYear() != holidays.year){
+          if(view.currentStart.getFullYear() != hebcal.year){
            changeYear(view.currentStart)
           }
-  
           let arr = el.getElementsByClassName('fc-day-top');
           for(let i = 0; i < arr.length; i++){
             let hebDay = React.createElement('span', {className: "fc-day-number heb-day a",key: i }, getHebDay(arr[i].getAttribute('data-date')));
             let numberDay = React.createElement('span', {className: "fc-day-number a",key: i+1}, arr[i].getElementsByTagName('span')[0].innerText);
-            let holidaysOfDay = React.createElement('div', {className: "holidays-continer", key: i+2}, <Day date={new Date(arr[i].getAttribute('data-date'))} view={view}></Day>);
+            let holidaysOfDay = React.createElement('div', {className: "holidays-continer", key: i+2},<Provider store={store}> <Day date={new Date(arr[i].getAttribute('data-date'))} view={view}></Day></Provider>);
             let container = React.createElement('div', {className: "day-continer",key: i+3}, [hebDay,holidaysOfDay,numberDay]);
             ReactDOM.render([container], arr[i]);
           }         
@@ -108,7 +106,6 @@ function MyFullCalendar({holidays, changeYear}) {
 }
 
 const mapStateToProps = state => {
-  console.log(state.hebcal)
-  return { holidays: state.hebcal};
+  return { hebcal: state.hebcal};
 };
 export default connect(mapStateToProps, {changeYear})(MyFullCalendar);
