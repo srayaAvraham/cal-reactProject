@@ -1,5 +1,7 @@
 .full-calendar{
     direction: rtl;
+    width: 80vw;
+    height: 100vh;
 }
 
 .heb-day{

@@ -11,7 +11,7 @@ export const sedra =  function (start, end) {
     let prashaEvent = [];
     for (let day = start; day.isBefore(end); day.add(1, 'days')){
         if(day.weekday() === 6){
-            let prasha =  new Hebcal.HDate(day._d).getParsha('h');
+            let prasha =  new Hebcal.HDate(day._d).setCity(city).getParsha('h');
             prashaEvent[new Hebcal.HDate(day._d).toString()] = prasha;
     }}
    // year['prashaEvent'] = prashaEvent;

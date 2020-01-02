@@ -20,7 +20,7 @@ import store from "../../redux/store";
 const calendarRef = React.createRef();
 
 function MyFullCalendar({hebcal, changeYear}) {
-  // console.log(getHolidays(new Date()));
+
     const [parshaEvents, setParshaEvents] = useState([]);
     const [holidaysEvents, setHolidays] = useState([]);
     const getEvents = () =>{
@@ -47,7 +47,6 @@ function MyFullCalendar({hebcal, changeYear}) {
         //   //getEvents();
         // });
      },[parshaEvents,holidaysEvents]);
-    let num = 1;
   return (
     <div className="full-calendar">
          <FullCalendar  
@@ -59,7 +58,10 @@ function MyFullCalendar({hebcal, changeYear}) {
               // other view-specific options here
             }
          }}
-         aspectRatio={2.2} 
+        height='parent'
+        windowResize={(view) => {
+         // alert('The calendar has adjusted to a window resize');
+        }}
          defaultView="dayGridMonth" 
          plugins={[ dayGridPlugin ]} 
          viewSkeletonRender={({el,view})=> {

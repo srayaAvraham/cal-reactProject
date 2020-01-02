@@ -19,7 +19,7 @@ function Day(props) {
 
     if (holiday.length > 0){
     return (
-    <div className="day" style={(holiday.length + prashas.length) > 3  ? {'line-height':'0.6vw'}:{}}>
+    <div className="day" style={(holiday.length + prashas.length) > 3  ? {'lineHeight':'0.6vw'}:{}}>
         {date.getDay()===6 ? <div className={inThisMonth ? 'holiday': 'holiday unactive'}>  {prashas}</div>:''}
         {holiday.map((e,i)=>{
             if(e.desc[0] != "Erev Shabbat" && e.desc[0] != "Shabbat")
