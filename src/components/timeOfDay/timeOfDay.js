@@ -3,7 +3,7 @@ import { } from '../helpers/hebcal';
 import { connect } from "react-redux";
 import * as moment from 'moment';
 import Hebcal from 'hebcal';
-import Timeline from 'react-time-line'
+import Timeline from '../timeline/timeline'
 import './timeOfDay.css';
 
 function TimeOfDay(props) {
@@ -41,20 +41,7 @@ function TimeOfDay(props) {
                     {/* <div class="actionbutton">+</div> */}
                 </div>
 
-                <div class="timeline">
-                    <ul>
-                        {sortedArray.map((el)=>{
-                         return <li>
-                            <div class="bullet pink"></div>
-                        <div class="time">{el.ts.format('Do,HH:mm:ss')}</div>
-                            <div class="desc">
-                                <h3>{el.text}</h3>
-                                {/* <h4>{el.text}</h4> */}
-                            </div>
-                        </li>
-                        })}
-                    </ul>
-                </div>
+<Timeline></Timeline>
             </div>
         </div>
     )
@@ -64,3 +51,18 @@ const mapStateToProps = state => {
     return { hebcal: state.hebcal };
 };
 export default connect(mapStateToProps, {})(TimeOfDay);
+
+// {/* <div class="timeline">
+// <ul>
+//     {sortedArray.map((el)=>{
+//      return <li>
+//         <div class="bullet pink"></div>
+//     <div class="time">{el.ts.format('Do,HH:mm:ss')}</div>
+//         <div class="desc">
+//             <h3>{el.text}</h3>
+//             {/* <h4>{el.text}</h4> */}
+//         </div>
+//     </li>
+//     })}
+// </ul>
+// </div> */}
