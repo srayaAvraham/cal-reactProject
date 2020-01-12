@@ -58,6 +58,7 @@ html, body, body > * {
 	min-width: 545px;
   background: white;
   padding: 0;
+  margin-top: 0;
 
 	&__event {
 		$block: #{&};

@@ -41,7 +41,7 @@ function TimeOfDay(props) {
                     {/* <div class="actionbutton">+</div> */}
                 </div>
 
-<Timeline></Timeline>
+<Timeline zmanim={sortedArray}></Timeline>
             </div>
         </div>
     )
