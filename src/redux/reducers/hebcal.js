@@ -2,7 +2,7 @@ import { CHANGE_YEAR, GET_PRASHA } from "../actionTypes";
 import Hebcal from 'hebcal';
 import * as moment from 'moment';
 import { sedra } from '../../components/helpers/hebcal'
-
+import {getDateString} from '../../components/helpers/hebcal'
 const city = 'Jerusalem'
 let year = new Hebcal.GregYear().setCity(city);
 
@@ -10,7 +10,7 @@ const initialState = {
     //! init all year event from hebcal
     holidays: year.holidays,
     prasha: sedra(moment().startOf('year'), moment().endOf('year')),
-    byDate: {},
+    byDate: {day: moment(), hebDay:{dateObj:Hebcal.HDate(), dateString: getDateString()}},
     year: year.year
 };
 

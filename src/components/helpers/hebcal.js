@@ -71,6 +71,16 @@ export const sedra =  function (start, end) {
 
     export const  getHebDay = function (date) {
         date = moment(date);
-        let hebDay = Hebcal.gematriya(new Hebcal.HDate(date._d).day); 
+        let hebDay = Hebcal.gematriya(new Hebcal.HDate(date._d).getDate()); 
         return hebDay;
+    }
+
+    export const getDateString = function (date){
+       let Hdate =  Hebcal.HDate().toString();
+       Hdate = Hdate.split(' ');
+       return {
+           year: Hdate[Hdate.length-1],
+           day: Hdate[0],
+           month: Hdate.slice(1, Hdate.length-1).toString()
+       }
     }

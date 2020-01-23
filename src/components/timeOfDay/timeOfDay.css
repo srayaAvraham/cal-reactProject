@@ -57,10 +57,12 @@
     height: 18vh;
  }
   .color-overlay {
-    padding: 3em 2em;
+    display: flex;
+    padding: 3em 1em 3em 1em;
     box-sizing: border-box;
     background: rgba(123, 94, 155, 0.5);
     height: 18vh;
+    justify-content: space-between;
  }
   .actionbutton {
     position: absolute;
