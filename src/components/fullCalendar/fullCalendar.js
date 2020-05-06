@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import './fullCalendar.css';
-import {sedra, holidays,getHebDay, changeYear1,candleLighting , havdalah} from '../helpers/hebcal';
+import {sedra, holidays,getHebDay, changeYear1,candleLighting , havdalah, omer} from '../helpers/hebcal';
 import Day from '../day/day'
 import '@fullcalendar/core/main.css';
 import '@fullcalendar/daygrid/main.css';
@@ -27,25 +27,39 @@ function MyFullCalendar({hebcal, changeYear}) {
         let CA = calendarRef.current.getApi();
         //setParshaEvents(sedra(CA.state.dateProfile.currentRange.start,CA.state.dateProfile.currentRange.end));
         //setHolidays(holidays(CA.state.dateProfile.currentRange.start,CA.state.dateProfile.currentRange.end));
+        debugger
+        //setHolidays(omer(CA.state.dateProfile.currentRange.start,CA.state.dateProfile.currentRange.end));
     }
     //First time
     let event = [];
     useEffect(()=> {
-        //getEvents();
-         //const table = document.getElementsByTagName('table');
-        // table[0].dir = 'rtl'
+        getEvents();
         const button = document.getElementsByClassName("fc-button-group")[0];
         button.addEventListener("click", () => {
-          //getEvents();
+          getEvents();
         });
      },[]);
+    //  useEffect(() => {
+    //   function handlekeydownEvent(event) {
+    //     const { key, keyCode } = event;
+    //     alert("fdsg")
+    //     if (keyCode === 32 || (keyCode >= 65 && keyCode <= 90)) {
+    //       alert("ihij")
+    //     }
+    //   }
+    //   const button = document.getElementsByClassName("color-overlay")[0];
+    //   button.addEventListener('click', handlekeydownEvent)
+    //   return () => {
+    //     document.removeEventListener('click', handlekeydownEvent)
+    //   }
+    // }, [])
  
      //Only if parshaEvents and holidaysEvents change
      useEffect(()=> {
-        // const button = document.getElementsByClassName("fc-button-group")[0];
-        // button.addEventListener("click", () => {
-        //   //getEvents();
-        // });
+        const button = document.getElementsByClassName("fc-button-group")[0];
+        button.addEventListener("click", () => {
+          getEvents();
+        });
      },[parshaEvents,holidaysEvents]);
   return (
     <div className="full-calendar">
@@ -84,11 +98,20 @@ function MyFullCalendar({hebcal, changeYear}) {
           dayRender = {({date,el,view})=>{
             let inThisMonth = view.currentStart.getMonth() === date.getMonth();
             let content = '';
-             if(date.getDay() === 5 && inThisMonth)
-                 content =  <div className={inThisMonth ? 'candle': 'candle unactive'}><span><Logo className="candle-svg"/></span><span className="time">הדלקת נרות : {candleLighting(date).getHours()}:{ candleLighting(date).getMinutes()}</span><span><Logo className="candle-svg"/></span></div>;
-             if(date.getDay() === 6 && inThisMonth)  
-                 content =  <div className={inThisMonth ? 'candle': 'candle unactive'}>צאת השבת : {havdalah(date).getHours()}:{ havdalah(date).getMinutes()} </div>;
-              ReactDOM.render(content, el);
+            let content2 = '';
+            let omer1 = omer(date);
+            console.log(omer1)
+            if(omer1)
+              if(date.getDay() === 5 || date.getDay() === 6)
+                content2 =  <div className={'omer up'}> {omer1}: בעומר </div>;
+              else
+                content2 =  <div className={'omer buttom'}> {omer1}: בעומר </div>;  
+            if(date.getDay() === 5 && inThisMonth)
+                content =  <div className={inThisMonth ? 'candle buttom': 'candle unactive buttom'}><span><Logo className="candle-svg"/></span><span className="time">הדלקת נרות : {candleLighting(date).getHours()}:{ candleLighting(date).getMinutes()}</span><span><Logo className="candle-svg"/></span></div>;
+            if(date.getDay() === 6 && inThisMonth)  
+                content =  <div className={inThisMonth ? 'candle buttom': 'candle unactive buttom'}>צאת השבת : {havdalah(date).getHours()}:{ havdalah(date).getMinutes()} </div>;
+            let container = React.createElement('div', {className: "day-grid"}, [content,content2 ]);
+            ReactDOM.render([container], el);
           }}
           eventRender={({ event, el }) => {
             // console.log(el)

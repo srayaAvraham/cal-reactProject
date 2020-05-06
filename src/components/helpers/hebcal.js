@@ -60,15 +60,9 @@ export const sedra =  function (start, end) {
     export const havdalah = function (date) {
         return new Hebcal.HDate(date).setCity(city).havdalah()
     }
-    // export const changeYear1 = function(date){
-    //     if(date.getFullYear()  > year.year)
-    //         year = year.next();
-    //         //sedra(moment().startOf('year'),moment().endOf('year'));
-    //     else if(date.getFullYear()  < year.year)
-    //         year = year.prev();
-    //     return year
-    // }
-
+    export const omer = function (start) {
+        return Hebcal.gematriya(new Hebcal.HDate(start).omer());
+    }
     export const  getHebDay = function (date) {
         date = moment(date);
         let hebDay = Hebcal.gematriya(new Hebcal.HDate(date._d).getDate()); 
