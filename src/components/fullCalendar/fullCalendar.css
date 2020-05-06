@@ -1,13 +1,11 @@
 .full-calendar{
     direction: rtl;
+    width: 80vw;
+    height: 100vh;
 }
 
 .heb-day{
-   /* background: lightblue; 
-   -moz-border-radius: 70px; 
-   -webkit-border-radius: 70px; 
-   border-radius: 70px;   
-   font-size: 1em; */
+
 }
 
 .day-continer{
@@ -16,6 +14,7 @@
     background-color: whitesmoke;
     /* height: 38px; */
     border-radius: 10% 10% 10% 10% / 50% 50% 50% 50% ; 
+    /* border-radius: 100px ; */
     margin: 2px 2px;
 }
 
@@ -29,12 +28,14 @@
     border-radius: 50%;
 }
 .candle{
-    display: flex;
+    /* display: flex;
     font-size: 0.8vw;
     position: absolute;
-    bottom: 0;
+    bottom: 0; */
+    text-align: center;
+    
 }
-.candle-svg{
+/* .candle-svg{
     width: 1vw;
     height: auto;
 }
@@ -46,4 +47,27 @@
 .time{
     position: relative;
     bottom: -0.2vw;
+} */
+.day-grid{
+    display: grid;
+    height: 99%;
+    width: 99%;
+    grid-template-columns: 15% auto 15%;
+    grid-template-rows: 15% auto 15% 15%;
+}
+.omer{
+    text-align: center;
+}
+.up{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    text-align: center;
+}
+.buttom{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 4;
 }

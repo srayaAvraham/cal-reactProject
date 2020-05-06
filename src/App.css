@@ -1,5 +1,5 @@
 .full-calendar{
-  height: 50%;
+  /* height: 50%; */
 }
 
 /* RTL */
@@ -9,3 +9,7 @@ table{
 /* .fc-ltr{
   text-align: right !important;
 } */
+.App{
+  display: flex;
+  flex-direction: row-reverse;
+}
