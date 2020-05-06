@@ -35,7 +35,7 @@
     text-align: center;
     
 }
-.candle-svg{
+/* .candle-svg{
     width: 1vw;
     height: auto;
 }
@@ -47,7 +47,7 @@
 .time{
     position: relative;
     bottom: -0.2vw;
-}
+} */
 .day-grid{
     display: grid;
     height: 99%;

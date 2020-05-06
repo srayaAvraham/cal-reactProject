@@ -107,7 +107,8 @@ function MyFullCalendar({hebcal, changeYear}) {
               else
                 content2 =  <div className={'omer buttom'}> {omer1}: בעומר </div>;  
             if(date.getDay() === 5 && inThisMonth)
-                content =  <div className={inThisMonth ? 'candle buttom': 'candle unactive buttom'}><span><Logo className="candle-svg"/></span><span className="time">הדלקת נרות : {candleLighting(date).getHours()}:{ candleLighting(date).getMinutes()}</span><span><Logo className="candle-svg"/></span></div>;
+            content =  <div className={inThisMonth ? 'candle buttom': 'candle unactive buttom'}>הדלקת נרות : {candleLighting(date).getHours()}:{ candleLighting(date).getMinutes()}</div>;
+            // content =  <div className={inThisMonth ? 'candle buttom': 'candle unactive buttom'}><span><Logo className="candle-svg"/></span><span className="time">הדלקת נרות : {candleLighting(date).getHours()}:{ candleLighting(date).getMinutes()}</span><span><Logo className="candle-svg"/></span></div>;
             if(date.getDay() === 6 && inThisMonth)  
                 content =  <div className={inThisMonth ? 'candle buttom': 'candle unactive buttom'}>צאת השבת : {havdalah(date).getHours()}:{ havdalah(date).getMinutes()} </div>;
             let container = React.createElement('div', {className: "day-grid"}, [content,content2 ]);
