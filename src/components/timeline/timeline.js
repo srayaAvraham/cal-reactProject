@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Translate } from "react-redux-i18n";
 import './timeline.scss';
 import * as moment from 'moment';
 function Timeline(props) {
@@ -20,7 +21,7 @@ function Timeline(props) {
                                 <canvas width="9px" height="9px"></canvas>
                                 <svg viewBox="0 0 9 9"><use xlinkHref="/src/svg/symbols/symbols.svg#tick"></use></svg>
                             </span>				</figure>
-                        <h5 className="timeline__event__title">{zman.text}</h5>
+                        <h5 className="timeline__event__title"><Translate value={zman.text} /></h5>
                         <h6 className="timeline__event__difference"></h6>
                     </li>)
                 } else {
@@ -31,7 +32,7 @@ function Timeline(props) {
                         <figure className="dot">
                         </figure>
 
-                        <h5 className="timeline__event__title">{zman.text}</h5>
+                        <h5 className="timeline__event__title"><Translate value={zman.text} /></h5>
 
                         <h6 className="timeline__event__difference"></h6>
 
