@@ -12,6 +12,6 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
 syncTranslationWithStore(store);
 store.dispatch(loadTranslations(translations));
-store.dispatch(setLocale("he"));
+store.dispatch(setLocale("en"));
 
 export default store;

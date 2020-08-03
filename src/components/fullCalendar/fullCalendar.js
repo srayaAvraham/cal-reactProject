@@ -15,6 +15,8 @@ import { connect } from "react-redux";
 import { changeYear } from "../../redux/actions";
 import { Provider } from "react-redux";
 import store from "../../redux/store"; 
+import LanguageSwitcher from '../languaageSwitcher/LanguageSwitcher'
+
 
 
 const calendarRef = React.createRef();
@@ -34,10 +36,10 @@ function MyFullCalendar({hebcal, changeYear}) {
     let event = [];
     useEffect(()=> {
         getEvents();
-        const button = document.getElementsByClassName("fc-button-group")[0];
-        button.addEventListener("click", () => {
-          getEvents();
-        });
+        // const button = document.getElementsByClassName("fc-button-group")[0];
+        // button.addEventListener("click", () => {
+        //   getEvents();
+        // });
      },[]);
     //  useEffect(() => {
     //   function handlekeydownEvent(event) {
@@ -56,13 +58,15 @@ function MyFullCalendar({hebcal, changeYear}) {
  
      //Only if parshaEvents and holidaysEvents change
      useEffect(()=> {
-        const button = document.getElementsByClassName("fc-button-group")[0];
-        button.addEventListener("click", () => {
-          getEvents();
-        });
+        // const button = document.getElementsByClassName("fc-button-group")[0];
+        // button.addEventListener("click", () => {
+        //   getEvents();
+        // });
      },[parshaEvents,holidaysEvents]);
   return (
+
     <div className="full-calendar">
+          <LanguageSwitcher/>
          <FullCalendar  
          locale="he" 
          ref={calendarRef} 
@@ -121,11 +125,12 @@ function MyFullCalendar({hebcal, changeYear}) {
             // return el;
           }}
          events={[...holidaysEvents, ...parshaEvents]}
-         header={{
-            right: "",
-            center: 'title',
-            left : "next,prev today"
-          }}
+         header={false}
+        //  header={{
+        //     right: "",
+        //     center: 'title',
+        //     left : ""
+        //   }}
          />
     </div>
   );

@@ -1,7 +1,8 @@
 .full-calendar{
-    direction: rtl;
-    width: 80vw;
-    height: 100vh;
+    /* direction: rtl; */
+    /* width: 80vw; */
+    height: 91vh;
+    padding: 10px;
 }
 
 .heb-day{

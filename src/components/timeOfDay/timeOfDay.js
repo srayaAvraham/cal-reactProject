@@ -21,17 +21,6 @@ function TimeOfDay(props) {
     return (
         <div className="time-of-day">
             <div className="container">
-                {/* <div className="navbar">
-                    <a href="#">
-                        <i className="fa fa-bars" aria-hidden="true"></i>
-                    </a>
-                    <div className="profile-pic">
-                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg" alt="" />
-                        <div className="notification"></div>
-                    </div>
-                    <span>Timeline</span>
-                </div> */}
-
                 <div className="header">
                     <div className="color-overlay">
                         <div className="">

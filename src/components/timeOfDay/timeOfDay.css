@@ -12,7 +12,7 @@
     /* box-shadow: 0 0 40px #a0a0a0; */
     font-family: 'Open Sans', sans-serif;
  }
-  .navbar {
+  /* .navbar {
     background: #b97cfc;
     color: #fff;
     padding: 1em 0.5em;
@@ -28,7 +28,7 @@
     font-weight: 300;
     display: block;
     text-align: center;
- }
+ } */
   .profile-pic {
     width: 30px;
     height: 30px;
